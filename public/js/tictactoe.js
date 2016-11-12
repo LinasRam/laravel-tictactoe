@@ -16,10 +16,43 @@ $(document).ready(function () {
         });
     });
 
-    hello();
+    lookForInvitation();
 
-    function hello() {
-        console.log("hello");
-        setTimeout(hello, 1000);
+    function lookForInvitation() {
+        $.ajax({
+            type: 'GET',
+            url: BASE_URL + '/invitation/look',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                if (data.invitation == true) {
+                    $('#invitation-modal').modal('show');
+                }
+            }
+        });
+        setTimeout(lookForInvitation, 1000);
     }
+
+    $('#invitation-modal').on('hidden.bs.modal', function () {
+        $.ajax({
+            type: 'GET',
+            url: BASE_URL + '/invitation/decline',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+
+    $('#accept-button').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: BASE_URL + '/invitation/accept',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                window.location.href = BASE_URL + "/game/" + data.game_id;
+            }
+        });
+    });
 });
