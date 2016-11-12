@@ -21,6 +21,7 @@ class InvitationController extends Controller
         $invitation = new Invitation();
         $invitation->user1_id = $user;
         $invitation->user2_id = $invitedUser;
+        $invitation->accepted = false;
         $invitation->save();
 
         return response()->json([]);
@@ -59,6 +60,7 @@ class InvitationController extends Controller
         $invitation = Invitation::where('user2_id', $user)->first();
         $user1 = $invitation->user1_id;
         $user2 = $invitation->user2_id;
+        Invitation::where('user2_id', $user)->update(['accepted' => true]);
 
         $previousGames = Game::where('user1_id', $user)->orWhere('user2_id', $user)->delete();
 
@@ -70,12 +72,38 @@ class InvitationController extends Controller
 
         $gameId = Game::where('user2_id', $user)->first()->id;
 
-        $invitation = Invitation::where('user2_id', $user)->delete();
-
         return response()->json(array(
-            'user1' => $user1,
-            'user2' => $user2,
             'game_id' => $gameId,
+        ));
+    }
+
+    public function cancel()
+    {
+        $user = Auth::user()->id;
+
+        $invitation = Invitation::where('user1_id', $user)->delete();
+
+        return response()->json();
+    }
+
+    public function lookForResponse()
+    {
+        $user = Auth::user()->id;
+
+        $invitation = Invitation::where('user1_id', $user)->first();
+
+        if (!collect($invitation)->isEmpty()) {
+            if ($invitation->accepted == true) {
+                $invitation = Invitation::where('user1_id', $user)->delete();
+                $gameId = Game::where('user1_id', $user)->first()->id;
+                return response()->json(array(
+                    'accepted' => true,
+                    'game_id' => $gameId,
+                ));
+            }
+        }
+        return response()->json(array(
+            'accepted' => false,
         ));
     }
 

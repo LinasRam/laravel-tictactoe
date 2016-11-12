@@ -16,6 +16,7 @@ class Invitations extends Migration
         Schema::create('invitations', function (Blueprint $table) {
             $table->integer('user1_id');
             $table->integer('user2_id');
+            $table->boolean('accepted');
         });
     }
 

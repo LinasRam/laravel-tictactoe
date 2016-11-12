@@ -49,3 +49,7 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 @endsection
+
+@section('scripts')
+    <script src="/js/tictactoe.js"></script>
+@endsection

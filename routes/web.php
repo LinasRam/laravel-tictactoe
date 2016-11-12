@@ -19,9 +19,12 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/game/{id}', 'GameController@index');
-Route::get('/invitation/send/{invitedUser}', 'InvitationController@sendInvitation');
+Route::get('/invitation/send/{invitedUser}', 'InvitationController@sendInvitation')->name('send_invitation');
 Route::get('/invitation/look', 'InvitationController@lookForInvitation');
 Route::get('/invitation/decline', 'InvitationController@decline');
 Route::get('/invitation/accept', 'InvitationController@accept');
+Route::get('/invitation/cancel', 'InvitationController@cancel');
+Route::get('/invitation/response', 'InvitationController@lookForResponse');
+
 
 Route::post('/test', 'HomeController@test');
