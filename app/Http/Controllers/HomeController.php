@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = Activity::usersBySeconds(30)->get();
+        $users = Activity::usersBySeconds(5)->get();
 
         return view('home', array('users' => $users));
     }

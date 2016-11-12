@@ -27,6 +27,8 @@ class GamesTable extends Migration
             $table->char('button8', 1)->nullable();
             $table->char('button9', 1)->nullable();
             $table->integer('turn_user_id');
+            $table->integer('moves');
+            $table->integer('winner_id')->nullable();
         });
     }
 

@@ -68,6 +68,7 @@ class InvitationController extends Controller
         $game->user1_id = $invitation->user1_id;
         $game->user2_id = $invitation->user2_id;
         $game->turn_user_id = $invitation->user1_id;
+        $game->moves = 0;
         $game->save();
 
         $gameId = Game::where('user2_id', $user)->first()->id;
