@@ -7,12 +7,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Online users</div>
                     <div class="panel-body">
-                        <ul>
+                        <ul id="online-users-list">
                             @foreach($users as $user)
-                                <li>
-                                    <a class="invitation-link"
-                                       href="{{ route('send_invitation', $user->user->id) }}">{{ $user->user->name }}</a>
-                                </li>
+                                @if($user->user->id != $user_id)
+                                    <li>
+                                        <a class="invitation-link"
+                                           href="{{ route('send_invitation', $user->user->id) }}">{{ $user->user->name }}</a>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

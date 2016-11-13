@@ -60,7 +60,7 @@
                     <p>You won!</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Decline</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -78,7 +78,7 @@
                     <p>You lost...</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Decline</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

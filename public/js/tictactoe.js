@@ -32,6 +32,16 @@ $(document).ready(function () {
         gameButtonHandler(9)
     });
 
+    $('#draw-modal').on('hidden.bs.modal', function () {
+        window.location.href = BASE_URL.replace("game", "");
+    });
+    $('#winner-modal').on('hidden.bs.modal', function () {
+        window.location.href = BASE_URL.replace("game", "");
+    });
+    $('#loser-modal').on('hidden.bs.modal', function () {
+        window.location.href = BASE_URL.replace("game", "");
+    });
+
 });
 
 function getGameId() {

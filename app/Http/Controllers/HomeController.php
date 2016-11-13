@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Activity;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = Activity::usersBySeconds(5)->get();
+        $userId = Auth::user()->id;
+        $users = Activity::usersBySeconds(60)->get();
 
-        return view('home', array('users' => $users));
+        return view('home', array(
+            'users' => $users,
+            'user_id' => $userId,
+        ));
     }
 
 }
