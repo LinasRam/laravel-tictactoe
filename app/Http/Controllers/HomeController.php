@@ -29,20 +29,4 @@ class HomeController extends Controller
         return view('home', array('users' => $users));
     }
 
-    public function test(Request $request)
-    {
-        session(['key' => array('key1' => 'value1', 'key2' => 'value2')]);
-
-        $value = session('key');
-
-        $value['key1'] = 'changed';
-        session(['key' => $value]);
-
-        $value = session('key');
-
-        $users = Activity::users()->get();
-
-        return response()->json(['users' => $users], 200);
-    }
-
 }

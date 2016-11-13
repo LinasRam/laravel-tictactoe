@@ -10,7 +10,6 @@ $(document).ready(function () {
             url: BASE_URL + '/invitation/decline',
             dataType: 'json',
             success: function (data) {
-                console.log(data);
             }
         });
     });
@@ -21,7 +20,6 @@ $(document).ready(function () {
             url: BASE_URL + '/invitation/accept',
             dataType: 'json',
             success: function (data) {
-                console.log(data);
                 window.location.href = BASE_URL + "/game/" + data.game_id;
             }
         });
@@ -36,7 +34,6 @@ $(document).ready(function () {
             url: href,
             dataType: 'json',
             success: function (data) {
-                console.log(data);
                 $('#waiting-modal').modal('show');
                 lookForInvitationResponse();
             }
@@ -49,7 +46,6 @@ $(document).ready(function () {
             url: BASE_URL + '/invitation/cancel',
             dataType: 'json',
             success: function (data) {
-                console.log(data);
             }
         });
     });
@@ -61,7 +57,6 @@ function lookForInvitation() {
         url: BASE_URL + '/invitation/look',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             if (data.invitation == true) {
                 $('#invitation-modal').modal('show');
             }
@@ -76,7 +71,6 @@ function lookForInvitationResponse() {
         url: BASE_URL + '/invitation/response',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             if (data.accepted == true) {
                 window.location.href = BASE_URL + '/game/' + data.game_id;
             }

@@ -27,5 +27,4 @@ Route::get('/invitation/response', 'InvitationController@lookForResponse');
 
 Route::get('/game/{id}', 'GameController@index');
 Route::get('/game/move/{id}/{button}', 'GameController@move');
-
-Route::post('/test', 'HomeController@test');
+Route::get('/game/{id}/status', 'GameController@status');
